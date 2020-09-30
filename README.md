@@ -3,7 +3,7 @@ This repository has various example projects created by the Appwrite community u
 
 ## Small Examples
 - [**Login and Signup Page**](/example-auth/) Implementation of Appwrite's Create Session and Create User API Using Vue as the UI Framework.
-- [** File Uploader **](/example-fileupload/) Implementation of Appwrite's Storage API using Vue as the UI Framework to create a File Uploader where you can upload files and see recently uploaded ones, including the ability to download and delete the files.
+- [**File Uploader**](/example-fileupload/) Implementation of Appwrite's Storage API using Vue as the UI Framework to create a File Uploader where you can upload files and see recently uploaded ones, including the ability to download and delete the files.
 
 ## Large Projects
 None yet! Go ahead and create some!
