@@ -63,21 +63,23 @@ Make sure to replace the URL and ProjectID with your Endpoint and ProjectID You 
 In order for us to create this to-do app we need a place to store it, In appwrite we have collections and if you use or have used MongoDB this should be instantly familiar! We need to first create a collection in our appwrite database for this app to use.
 
 First, we want to navigate to our appwrite control panel and login, then navigate to the Database tab.
-![Image Showing where the database tab is](/tutorial-resources/images/1.png)
+![Image Showing where the database tab is](https://raw.githubusercontent.com/PineappleIOnic/demos-for-vue-1/example-database/example-database/tutorial-resources/images/1.png)
 Once there go ahead and click on the `+` icon in the bottom right corner, Go ahead and give this new collection a name, any name it doesn't matter since what we need is the CollectionID which you will get once you've created the collection. It can be found here: 
-![Image Showing where the collection ID is](/tutorial-resources/images/2.png)
+![Image Showing where the collection ID is](https://raw.githubusercontent.com/PineappleIOnic/demos-for-vue-1/example-database/example-database/tutorial-resources/images/2.png)
 Go ahead and copy that and keep it in an open notepad since we will use it later when we are writing code
 
 Next, we are going to create the schema for the collection. Go ahead and navigate to settings under the rules section click on `Add` where you want to add 3 rules, Copy the rules from the images below:
 
-![Image Showing collection rules 1](/tutorial-resources/images/3.png)
-![Image Showing collection rules 2](/tutorial-resources/images/4.png)
-![Image Showing collection rules 3](/tutorial-resources/images/5.png)
+![Image Showing collection rules 1](https://raw.githubusercontent.com/PineappleIOnic/demos-for-vue-1/example-database/example-database/tutorial-resources/images/3.png)
+
+![Image Showing collection rules 2](https://raw.githubusercontent.com/PineappleIOnic/demos-for-vue-1/example-database/example-database/tutorial-resources/images/4.png)
+
+![Image Showing collection rules 3](https://raw.githubusercontent.com/PineappleIOnic/demos-for-vue-1/example-database/example-database/tutorial-resources/images/5.png)
 
 Finally, we are going to allow read, write access to everyone this is because we don't want to have to sign in to add these tasks and read them. Please note that you do not want to do this in a public web app powered by appwrite. We are only doing this for ease of use while developing this project.
 
 Navigate to the settings again and in the permissions section add * to both read and write permissions like so
-![Image Showing permissions](/tutorial-resources/images/6.png)
+![Image Showing permissions](https://raw.githubusercontent.com/PineappleIOnic/demos-for-vue-1/example-database/example-database/tutorial-resources/images/6.png)
 
 Make sure to click Update to apply all the changes you've just made to the collection, once we've done that we can get back stuck into the code!
 ## Creating the fetch code
