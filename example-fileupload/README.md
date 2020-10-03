@@ -53,11 +53,21 @@ This will give us a basic app with nothing in it, which allows us to start creat
 Next, we are going to create a JS File with the Appwrite Initialisation code so we can easily import it in our app code from where ever we like. Create a new file `src/utils.js` and place the following code in it.
 
 ```js
-import * as Appwrite from 'appwrite'
-const appwrite = new Appwrite()
+import * as Appwrite from  'appwrite'
+const appwrite =  new Appwrite()
 appwrite
   .setEndpoint('http://EndpointURL.example/') // Replace this with your endpoint
   .setProject('ProjectID') // Replace this with your projectID
+ 
+let promise = sdk.account.createSession('emailaddress', 'password'); // Replace with a appwrite account you created
+
+promise.then(function (response) {
+      console.log(`Successfully logged in as: ${response.name}`); // Success
+  }, function (error) {
+      console.error(error); // Failure
+  });
+ 
+ 
 export { appwrite }
 ```
 Make sure to replace the URL and ProjectID with your Endpoint and ProjectID You created in your appwrite installation.
