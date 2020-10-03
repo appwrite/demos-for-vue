@@ -55,9 +55,20 @@ const appwrite =  new Appwrite()
 appwrite
   .setEndpoint('http://EndpointURL.example/') // Replace this with your endpoint
   .setProject('ProjectID') // Replace this with your projectID
+ 
+let promise = sdk.account.createSession('emailaddress', 'password'); // Replace with a appwrite account you created
+
+promise.then(function (response) {
+      console.log(`Successfully logged in as: ${response.name}`); // Success
+  }, function (error) {
+      console.error(error); // Failure
+  });
+ 
+ 
 export { appwrite }
 ```
 Make sure to replace the URL and ProjectID with your Endpoint and ProjectID You created in your appwrite installation.
+Aswell as the email address and password to sign in the app to a appwrite account so it can access the functions it needs.
 
 ## Creating the collection
 In order for us to create this to-do app we need a place to store it, In appwrite we have collections and if you use or have used MongoDB this should be instantly familiar! We need to first create a collection in our appwrite database for this app to use.
