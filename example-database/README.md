@@ -5,7 +5,7 @@ This example is to showcase [Appwrite's JS API](https://github.com/appwrite/sdk-
 
 -   A recent version of [NodeJS](https://nodejs.org/)
 -   [Yarn](https://yarnpkg.com/) (Feel free to use [NPM](https://www.npmjs.com/) if you want to, just switch out the Yarn Commands for their NPM counterparts)
--   [A locally running appwrite instance](https://appwrite.io/docs/installation).
+-   [A locally running Appwrite instance](https://appwrite.io/docs/installation).
 
 ## Getting Started
 To get started as fast as possible we will use the Vue CLI, Here we will use NPX to launch the Vue CLI without installing it globally.
