@@ -3,8 +3,8 @@ This example is to showcase [Appwrite's JS API](https://github.com/appwrite/sdk-
 
 ## Prerequisites
 
--   A Recent Version of NodeJS
--   Yarn (Feel free to use NPM if you want to, just switch out the Yarn Commands for their NPM counterparts)
+-   A recent version of [NodeJS](https://nodejs.org/)
+-   [Yarn](https://yarnpkg.com/) (Feel free to use [NPM](https://www.npmjs.com/) if you want to, just switch out the Yarn Commands for their NPM counterparts)
 -   [A locally running appwrite instance](https://appwrite.io/docs/installation).
 
 ## Getting Started
