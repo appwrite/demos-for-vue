@@ -1,21 +1,21 @@
 
 
 # Appwrite + VueJS =❤️
-This example is to showcase [Appwrite's JS API](https://github.com/appwrite/sdk-for-js) with [VueJS](https://vuejs.org/) by creating a File Uploading Application where you can Upload files and See recently uploaded files.
+This example is to showcase [Appwrite's JS API](https://github.com/appwrite/sdk-for-js) with [VueJS](https://vuejs.org/) by creating a file uploading application where you can upload files and see recently uploaded files.
 
 ## Prerequisites
 
--   A Recent Version of NodeJS
--   Yarn (Feel free to use NPM if you want to, just switch out the Yarn Commands for their NPM counterparts)
+-   A recent version of [NodeJS](https://nodejs.org/)
+-   [Yarn](https://yarnpkg.com/) (Feel free to use [NPM](https://www.npmjs.com/) if you want to, just switch out the Yarn Commands for their NPM counterparts)
 -   [A locally running appwrite instance](https://appwrite.io/docs/installation).
 
 ## Getting Started
-To get started as fast as possible we will use the Vue CLI, Here we will use NPX to launch the Vue CLI without installing it globally.
+To get started as fast as possible we will use the Vue CLI, here we will use NPX to launch the Vue CLI without installing it globally.
 ``` shell
 npx @vue/cli create --default example-fileupload
 cd example-fileupload
 ```
-that should create an app with VueJS 2, Babel and ESLint, while we are in the terminal we might as well install the appwrite SDK for later using:
+That should create an app with VueJS 2, Babel and ESLint, while we are in the terminal we might as well install the Appwrite SDK for later using:
 ```shell
 yarn add appwrite
 ```
@@ -137,7 +137,7 @@ This function does the following:
  2. When the request is processed from the server if it's successful then set the allFiles variable to the file list returned
  3. If we fail then log the error into the console for further inspection and debugging.
 
-and finally, we will create a `created()` function, in VueJS the `created()` function is always executed when the component is created hence its name, we use this to trigger the initial get of data when the `App.vue` component is first created. Go ahead and add this code into the `export default` object and make sure it isn't in the `methods`object or else it will not execute
+and finally, we will create a `created()` function, in VueJS the `created()` function is always executed when the component is created hence its name, we use this to trigger the initial get of data when the `App.vue` component is first created. Go ahead and add this code into the `export default` object And make sure it isn't in the `methods`object or else it will not execute.
 ```js
 created() {
   this.getAllFiles() // Trigger initial get of file list.
@@ -180,7 +180,8 @@ export default {
 
 
 ### Styling
-When it comes to styling this app feel free to style it yourself and make it unique or use the style I created earlier if you want to use mine simply replace the `<style>` section with the following code:
+When it comes to styling this app, feel free to style it yourself and make it unique or use the style I created earlier. If you want to use mine simply replace the `<style>` section with the following code:
+
 ```html
 <style>
   * {
@@ -211,7 +212,7 @@ Give yourself a pat on the back. 🥳🥳🥳
 Next, we will start creating the fileUploader.
 
 ## `src/components/FileUploader.vue`
-If you haven't already, go ahead and create the `src/components/FileUploader.vue` file, Now before we start creating this component I'm going to start talking about how it's going to work.
+If you haven't already, go ahead and create the `src/components/FileUploader.vue` file, now before we start creating this component I'm going to start talking about how it's going to work.
 Essentially all the FileUploader appears as to the user will be a button but behind the scenes, we're going to pull some trickery to make it easy to start file uploads.
 
 What we are actually going to do is create a file upload input and hide it using `display: none` in its styling, then to trigger the file upload we will use a reference of the input uploader and tell it that the user has clicked it triggering the file upload prompt!
