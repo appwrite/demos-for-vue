@@ -20,7 +20,7 @@ While we are in the CLI, we will also install the Appwrite Web SDK by running:
 npm install appwrite
 ```
 
-and finally we will launch the React development server with:
+And finally we will launch the React development server with:
 
 ```shell
 npm run serve -- --port [port_number_of_api_endpoint]
