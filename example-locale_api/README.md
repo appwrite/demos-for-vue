@@ -14,7 +14,7 @@ vue create appwrite-locale-vue
 cd appwrite-locale-vue
 ```
 
-While we are in the CLI we will also install the Appwrite Web SDK by running:
+While we are in the CLI, we will also install the Appwrite Web SDK by running:
 
 ```shell
 npm install appwrite
