@@ -4,7 +4,7 @@ This example is to showcase [Appwrite's Locale API](https://appwrite.io/docs/cli
 
 ## Getting Started
 
-To get started quickly we will use vue cli to create the boilerplate that our code will be built on.
+We'll be using vue cli, to create a boilerplate and quickly get started with our project.
 
 ### Installation
 
@@ -28,7 +28,7 @@ npm run serve -- --port [port_number_of_api_endpoint]
 
 ## Introducing the Appwrite SDK
 
-We'll be working with a single component, that will be the app component itself. But first create a `utils.js` file in which we'll be intializing the sdk. Create `utils.js` in the `src` folder and paste the following code.
+To initialize the Appwrite's SDK, create a `util.js` file in the `src` folder and paste the following code. Here, inside the `setEndpoint` and `setProject` parantheses, add your API endpoint and project ID from appwrite's dashboard.
 
 ```js
 import * as Appwrite from "appwrite";
@@ -146,8 +146,7 @@ body {
 ## Explanation of above code:
 
 We first initialized the SDK in our `utils.js` file and then imported the locale.get() method into our `App.vue` file.
-Inside our methods section, we then by using a promise flooded the `info` data with the API's response.
-We then passed this response to our DOM and displayed the details.😉
+Then by using a promise, we fetched the data from our API and displayed it in our DOM.
 
 Congratulations!!! We just used the Locale API to get the clients IP and other details!! Woo-hoo! 🥳🥳🥳
 Now you can use these details that you've just got from the Appwrite's Locale API in your own project and personalize every user's experience.
