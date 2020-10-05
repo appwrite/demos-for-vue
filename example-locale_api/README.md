@@ -28,7 +28,7 @@ npm run serve -- --port [port_number_of_api_endpoint]
 
 ## Introducing the Appwrite SDK
 
-To initialize the Appwrite's SDK, create a `util.js` file in the `src` folder and paste the following code. Here, inside the `setEndpoint` and `setProject` parantheses, add your API endpoint and project ID from Appwrite's dashboard.
+To initialize the Appwrite's SDK, create a `utils.js` file in the `src` folder and paste the following code. Here, inside the `setEndpoint` and `setProject` parantheses, add your API endpoint and project ID from Appwrite's dashboard.
 
 ```js
 import * as Appwrite from "appwrite";
