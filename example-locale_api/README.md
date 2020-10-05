@@ -1,6 +1,6 @@
 # Appwrite + VueJS =❤️
 
-This example is to showcase [Appwrite's Locale API](https://appwrite.io/docs/client/locale) with [Vue](https://vuejs.org/) by creating a simple web-app that displays your IP, Country,Continent,CountryCode,Continent and Currency.
+This example is to showcase [Appwrite's Locale API](https://appwrite.io/docs/client/locale) with [Vue](https://vuejs.org/) by creating a simple web-app that displays your IP, Country, Continent, CountryCode, Continent and Currency.
 
 ## Getting Started
 
