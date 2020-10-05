@@ -44,7 +44,7 @@ export {sdk};
 
 A deeper inspection of this code can be found in the comments within it,
 
-TL:DR: Create a appwrite SDK Instance and initalise it with the endpoint and ProjectID of the project we are working with then export this for usage outside of the file.
+TL:DR: Create a Appwrite SDK Instance and initalise it with the endpoint and ProjectID of the project we are working with. Then export this for usage outside of the file.
 
 ## Creating App.vue
 
