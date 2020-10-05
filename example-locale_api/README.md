@@ -149,7 +149,7 @@ We first initialized the SDK in our `utils.js` file and then imported the locale
 Inside our methods section, we then by using a promise flooded the `info` data with the API's response.
 We then passed this response to our DOM and displayed the details.😉
 
-Congratulations!!! We just use Locale API to get the clients IP and other details!! Woo-hoo! 🥳🥳🥳
+Congratulations!!! We just used the Locale API to get the clients IP and other details!! Woo-hoo! 🥳🥳🥳
 Now you can use these details that you've just got from the Appwrite's Locale API in your own project and personalize every user's experience.
 
 Good Luck! If you need any help feel free to join the [Discord](https://discord.gg/ZFwqr3S) or Refer to the [Appwrite Documentation](https://appwrite.io/docs).
