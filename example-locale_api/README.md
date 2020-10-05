@@ -4,7 +4,7 @@ This example is to showcase [Appwrite's Locale API](https://appwrite.io/docs/cli
 
 ## Getting Started
 
-We'll be using vue cli, to create a boilerplate and quickly get started with our project.
+We'll be using the Vue CLI, to create a boilerplate and quickly get started with our project.
 
 ### Installation
 
