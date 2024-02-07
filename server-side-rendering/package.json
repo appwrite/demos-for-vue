@@ -1,0 +1,22 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "nuxt": "^3.10.1",
+    "vue": "^3.4.15",
+    "vue-router": "^4.2.5"
+  },
+  "dependencies": {
+    "@appwrite.io/pink": "^0.3.0",
+    "@appwrite.io/pink-icons": "^0.3.0",
+    "luke-node-appwrite-ssr": "^0.0.8"
+  }
+}
