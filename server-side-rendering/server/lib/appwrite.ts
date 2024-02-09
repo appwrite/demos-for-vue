@@ -5,13 +5,15 @@ export const SESSION_COOKIE = "my-custom-session";
 export function createAppwriteClient(
   event: Parameters<Parameters<typeof defineEventHandler>[0]>[0]
 ) {
+  const config = useRuntimeConfig(event);
+
   const client = new Client()
-    .setEndpoint(import.meta.env.PUBLIC_APPWRITE_ENDPOINT)
-    .setProject(import.meta.env.PUBLIC_APPWRITE_PROJECT_ID);
+    .setEndpoint(config.public.appwriteEndpoint)
+    .setProject(config.public.appwriteProjectId);
 
   // Set the API key for the client, bypassing rate limiting and enabling
   // Appwrite to return the `secret` property in the sessions objects.
-  client.setKey(import.meta.env.APPWRITE_KEY);
+  client.setKey(config.appwriteApiKey);
 
   // Optional step: set the forwarded headers to record the user's IP address
   // and user agent.
