@@ -1,6 +1,4 @@
 <script setup>
-import signInWithGithub from "~/utils/signInWithGitHub";
-
 const config = useRuntimeConfig();
 </script>
 
@@ -61,20 +59,12 @@ const config = useRuntimeConfig();
           </li>
           <span class="with-separators eyebrow-heading-3">or</span>
           <li class="form-item">
-            <button
-              class="button is-github is-full-width"
-              @click="
-                () =>
-                  signInWithGithub(
-                    config.public.appwriteEndpoint,
-                    config.public.appwriteProjectId
-                  )
-              "
-              type="button"
-            >
-              <span class="icon-github" aria-hidden="true" />
-              <span class="text">Sign in with GitHub</span>
-            </button>
+            <form method="POST" action="/api/oauth">
+              <button class="button is-github is-full-width" type="submit">
+                <span class="icon-github" aria-hidden="true" />
+                <span class="text">Sign in with GitHub</span>
+              </button>
+            </form>
           </li>
         </ul>
       </form>

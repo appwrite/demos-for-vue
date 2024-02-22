@@ -1,5 +1,5 @@
-import { ID } from "luke-node-appwrite-ssr";
-import { SESSION_COOKIE, createAppwriteClient } from "~/server/lib/appwrite";
+import { ID } from "node-appwrite";
+import { SESSION_COOKIE, createAdminClient } from "~/server/lib/appwrite";
 
 export default defineEventHandler(async (event) => {
   const formData = await readFormData(event);
@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
   const password = formData.get("password") as string;
   const name = formData.get("name") as string;
 
-  const { account } = createAppwriteClient(event);
+  const { account } = createAdminClient();
 
   await account.create(ID.unique(), email, password, name);
   const session = await account.createEmailPasswordSession(email, password);

@@ -72,20 +72,12 @@ const config = useRuntimeConfig();
           </li>
           <span class="with-separators eyebrow-heading-3">or</span>
           <li class="form-item">
-            <button
-              class="button is-github is-full-width"
-              type="button"
-              @click="
-                () =>
-                  signInWithGithub(
-                    config.public.appwriteEndpoint,
-                    config.public.appwriteProjectId
-                  )
-              "
-            >
-              <span class="icon-github" aria-hidden="true" />
-              <span class="text">Sign up with GitHub</span>
-            </button>
+            <form method="POST" action="/api/oauth">
+              <button class="button is-github is-full-width" type="submit">
+                <span class="icon-github" aria-hidden="true" />
+                <span class="text">Sign up with GitHub</span>
+              </button>
+            </form>
           </li>
         </ul>
       </form>

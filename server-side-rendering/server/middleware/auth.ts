@@ -1,10 +1,9 @@
-import { createAppwriteClient } from "../lib/appwrite";
+import { createSessionClient } from "../lib/appwrite";
 
 export default defineEventHandler(async (event) => {
-  const { account } = createAppwriteClient(event);
+  const { account } = createSessionClient(event);
 
   try {
-    const user = await account.get();
-    event.context.user = user && user.$id ? user : undefined;
-  } catch (error) {}
+    event.context.user = await account.get();
+  } catch {}
 });

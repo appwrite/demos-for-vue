@@ -1,4 +1,4 @@
-import { SESSION_COOKIE, createAppwriteClient } from "~/server/lib/appwrite";
+import { SESSION_COOKIE, createAdminClient } from "~/server/lib/appwrite";
 
 export default defineEventHandler(async (event) => {
   const formData = await readFormData(event);
@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
 
-  const { account } = createAppwriteClient(event);
+  const { account } = createAdminClient();
 
   const session = await account.createEmailPasswordSession(email, password);
 

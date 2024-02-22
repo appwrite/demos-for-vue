@@ -1,4 +1,4 @@
-import type { Models } from "luke-node-appwrite-ssr";
+import type { Models } from "node-appwrite";
 
 declare module "h3" {
   interface H3EventContext {
