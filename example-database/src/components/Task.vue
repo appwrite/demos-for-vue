@@ -1,37 +1,58 @@
 <template>
-    <div class="taskComponent" v-on:click.self="doneTask">
-        <div v-on:click.self="doneTask" v-bind:class="!this.data.done ? 'taskName' : 'taskName taskDone'">{{data.task}}</div>
-        <div class="taskDelete" v-on:click="deleteTask"><span /></div>
+  <div class="taskComponent" @click.self="doneTask"><!-- Update a task -->
+        <div @click.self="doneTask" :class="['taskName', done ? 'taskDone' : '']">{{ props.data.task }}</div>
+        <div class="taskDelete" @click.stop="deleteTask"><span></span></div><!-- Delete a task -->
     </div>
 </template>
 
-<script>
-import { appwrite } from './../utils'
-export default {
-    props: ['data'],
-    methods: {
-        deleteTask: function() {
-            let promise = appwrite.database.deleteDocument(this.data.$collection, this.data.$id);
+<script setup>
+import { ref, watch } from 'vue'
+import { appwrite } from '../utils.js'
+import { SECRETS } from '../secrets.js'
 
-            promise.then(() => {
-                this.$emit('refreshData')
-            }, function (error) {
-                console.error(error);
-            });
-        },
-        doneTask: function() {
-            let promise = appwrite.database.updateDocument(this.data.$collection, this.data.$id, {
-                done: !this.data.done
-            }, ['*'], ['*']);
+const props = defineProps({
+    data: { type: Object, required: true } // Prop to receive task data from parent
+})
+const emit = defineEmits(['refreshData']) // Emit event to parent to refresh data
 
-            this.data.done = !this.data.done
+// Reactive copy for "done" state (optimistic UI)
+const done = ref(!!props.data.done)
 
-            promise.then(() => {
-                this.$emit('refreshData')
-            }, function (error) {
-                console.error(error);
-            });
-        }
+// Keep local stat synchronized with props, when parent is updated
+watch(() => props.data.done, (v) => {
+    done.value = !!v
+})
+
+const deleteTask = async () => {
+    try {
+        await appwrite.database.deleteDocument(
+            SECRETS.DB.databaseId,
+            SECRETS.DB.tableName,
+            props.data.$id,
+        )
+        emit('refreshData')
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+const doneTask = async () => {
+    const newDone = !done.value
+    // Update of optimistic UI
+    done.value = newDone
+    try {
+        await appwrite.database.updateDocument(
+            SECRETS.DB.databaseId,
+            SECRETS.DB.tableName,
+            props.data.$id,
+            { done: newDone },
+        )
+        emit('refreshData')
+    } 
+    catch (error) {
+      console.error(error)
+      // Reverse on error
+      done.value = !newDone
     }
 }
 </script>
@@ -55,7 +76,6 @@ export default {
         font-size: 25px;
         transition: 0.2s;
     }
-
 
     .taskComponent:hover .taskName {
         text-decoration: line-through;

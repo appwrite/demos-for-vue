@@ -1,16 +1,21 @@
-import * as Appwrite from 'appwrite'
+import { Client, Account, Databases } from 'appwrite'
+import { SECRETS } from './secrets.js'
 
-const appwrite = new Appwrite()
-appwrite
-  .setEndpoint('ENDPOINT URL') // Replace this with your endpoint
-  .setProject('PROJECTID') // Replace this with your projectID
+// Configure client (using env vars)
+console.log("SECRETS.DB = ",SECRETS.DB)
+const client = new Client()
+  .setEndpoint(SECRETS.DB.endpoint)
+  .setProject(SECRETS.DB.projectId)
 
-  let promise = sdk.account.createSession('emailaddress', 'password');
+const account = new Account(client)
+const databases = new Databases(client)
 
-  promise.then(function (response) {
-      console.log(`Successfully logged in as: ${response.name}`); // Success
-  }, function (error) {
-      console.error(error); // Failure
-  });
+
+// Exporter a named object to provide appwrite features
+const appwrite = {
+  client,
+  account,
+  database: databases,
+}
 
 export { appwrite }

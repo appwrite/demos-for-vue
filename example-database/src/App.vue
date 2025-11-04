@@ -1,64 +1,61 @@
 <template>
   <div class="TaskCore">
-    <h1>Appwrite TO-DO List</h1>
-    <div v-for="data in tasks" :key="data.task">
-      <Task v-bind:data="data" v-on:refreshData='fetchTasks' />
+    <h1>Appwrite TO-DO List</h1><div v-for="data in tasks" :key="data.$id || data.task">
+      <Task :data="data" @refreshData="fetchTasks" />
     </div>
     <div class="newTaskForm">
-      <input v-model="newTask" placeholder="Add New Task">
+      <input v-model="newTask" placeholder="Add New Task" />
       <button v-on:click.prevent="createNewTask"><span>+</span></button>
     </div>
   </div>
 </template>
 
-<script>
-import { appwrite } from './utils'
+<script setup>
 
-import Task from './components/Task'
+import { ref, onMounted } from 'vue'
+import { appwrite } from './utils.js'
 
-export default {
- name: 'App',
- components: {
-   Task
- },
- data: function() {
-   return {
-    tasks: [],
-    newTask: ''
-   }
- },
- created: function() {
-   this.fetchTasks()
- },
- methods: {
-   createNewTask: function() {
-     if (this.newTask === '') { return }
+import Task from './components/Task.vue'
+import { SECRETS } from './secrets.js'
 
-     let promise = appwrite.database.createDocument('CollectionID', {
-       task: this.newTask,
-       done: false,
-       date: new Date()
-     }, ['*'], ['*']);
+const tasks = ref([])
+const newTask = ref('')
 
-      promise.then(() => {
-          this.fetchTasks()
-          this.newTask = ''
-      }, function (error) {
-          console.log(error); // Failure
-      });
-   },
-   fetchTasks: function() {
-    let promise = appwrite.database.listDocuments('CollectionID');
-
-    promise.then((response) => {
-        console.log(response); // Success
-        this.tasks = response.documents
-    }, function (error) {
-        console.log(error); // Failure
-    });
-   }
- }
+const fetchTasks = async () => {
+  try {
+    const response = await appwrite.database.listDocuments( 
+      SECRETS.DB.databaseId, 
+      SECRETS.DB.tableName,
+    )
+    tasks.value = response.documents || []
+  } catch (error) {
+    console.log(error)
+  }
 }
+
+const createNewTask = async () => {
+  if (!newTask.value.trim()) return
+
+  try {
+    // Here we don't use a transaction for a single document creation, it could be useful mostly when multiple operations are needed (CF https://appwrite.io/docs/products/databases/transactions)
+    await appwrite.database.createDocument(
+      SECRETS.DB.databaseId,
+      SECRETS.DB.tableName,
+      'unique()',
+      {
+        task: newTask.value,
+        done: false,
+        date: new Date()
+      },
+    )
+    newTask.value = ''
+    await fetchTasks()
+  } catch (error) {
+    console.error('createNewTask error', error)
+  }
+}
+
+onMounted(fetchTasks)
 </script>
 
 <style>
